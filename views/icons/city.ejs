@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pools Listings</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+<body class="bg-gray-100 p-6">
+    <h1 class="text-3xl font-bold text-center mb-6">Amazing Pools</h1>
+    <div class="card listing-card col-6 offset-3 show-card"  style="display: flex;flex-wrap:wrap;" >
+        <%  for(let i of cityList){ %>
+            <a href="/listing/<%=i.id%>" class="link">
+        <div class="card col listing-card " style="width: 20rem;margin: 30px;">
+            <img src="<%=i.image.url %>" class="card-img-top" alt="list image" style="height:20rem;border-radius: 10px;">
+            <div class="card-img-overlay">
+                Buy
+            </div>
+            <div class="card-body">
+              <p class="card-text"><b><%= i.title %></b>
+                     <br> <%= i.price %></p>
+            </div>
+        </div>
+        </a>
+        <% }%>
+    </div>  
+  
+</body>
+</html>

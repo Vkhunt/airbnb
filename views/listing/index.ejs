@@ -1,0 +1,98 @@
+<% layout("/layout/boilerplate")%>
+<body>
+<style>
+#filters{
+    display: flex;
+    flex-wrap:wrap;
+}
+.filter{
+    text-align:center;
+    margin-top:2rem ;
+    margin-right:2rem  ;
+    opacity:0.7;
+}
+.filter:hover {
+    opacity:1;
+    cursor:pointer;
+}
+.filter p{
+    font-size:1rem;
+}
+</style>
+    <div id="filters">
+        <div class="filter">
+            <div><a href="/listing/trending" style="text-decoration: none;color: black;">
+                <i class="fa-solid fa-fire" style="color:red;"></i> <br> Trending</a> 
+            </div>
+          
+        </div>
+        
+        <div class="filter"> 
+            <div><a href="/listing/category/City" style="text-decoration: none;color: black;">
+                <i class="fa-solid fa-mountain-city" style="color:red;"></i> <br> City</a> 
+            </div>
+        </div>
+        
+        <div class="filter"> 
+            <div><a href="/listing/category/Mountain" style="text-decoration: none;color: black;">
+                <i class="fa-solid fa-mountain" style="color:red;"></i> <br> Mountain</a> 
+            </div>
+        </div>
+        
+        <div class="filter"> 
+            <div><a href="/listing/category/castles" style="text-decoration: none;color: black;">
+                <i class="fa-solid fa-fort-awesome" style="color:red;"></i> <br> Castles</a> 
+            </div>
+        </div>
+        
+        <div class="filter"> 
+            <div><a href="/listing/category/Sea" style="text-decoration: none;color: black;">
+                <i class="fa-solid fa-person-swimming" style="color:red;"></i> <br> Sea</a> 
+            </div>
+        </div>
+        
+        <div class="filter"> 
+            <div><a href="/listing/category/camping" style="text-decoration: none;color: black;">
+                <i class="fa-solid fa-campground" style="color:red;"></i> <br> Camping</a> 
+            </div>
+        </div>
+        
+        <div class="filter"> 
+            <div><a href="/listing/category/farms" style="text-decoration: none;color: black;">
+                <i class="fa-solid fa-cow" style="color:red;"></i> <br> Farms</a> 
+            </div>
+        </div>
+        
+        <div class="filter"> 
+            <div><a href="/listing/category/Arctic" style="text-decoration: none;color: black;">
+                <i class="fa-solid fa-snowflake" style="color:red;"></i> <br> Arctic</a> 
+            </div>
+        </div>
+        
+        <div class="filter"> 
+            <div><a href="/listing/category/Deserts" style="text-decoration: none;color: black;">
+                <i class="fa-solid fa-wind" style="color:red;"></i> <br> Deserts</a> 
+            </div>
+        </div>
+        
+    </div>
+    <div class="row row-cols-lg-3 row-cols-md-3 mt-3 row-cols-sm-1">
+    <%  for(let i of alllisting){ %>
+        <a href="/listing/<%=i.id%>" class="link">
+    <div class="card col listing-card" style="width: 20rem">
+        <img src="<%=i.image.url %>" class="card-img-top" alt="list image" style="height:20rem">
+        <div class="card-img-overlay">
+            Buy
+        </div>
+        <div class="card-body">
+          <p class="card-text"><b><%= i.title %></b>
+                 <br> <%= i.price %></p>
+        </div>
+       </div>
+    </a>
+    <% }%>
+    </div>
+   
+</body>
+
+

@@ -1,0 +1,69 @@
+<% layout("/layout/boilerplate")%>
+<div class="row mt-3">
+    <div class="col-8 offset-2">
+<body>
+    <h1>edit this listing</h1>
+    <form method="POST" action="/listing/<%=list.id%>?_method=PUT"
+         novalidate class="needs-validation" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" name="listing[title]"value="<%=list.title%>" >
+            
+        </div>
+       
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <input type="text" class="form-control" name="listing[description]" value="<%=list.description%>" >
+ 
+        </div>
+        <div class="mb-3"> 
+            Original image
+        <img src="<%=list.image.url%>" alt="image" style="height: 500px; width:500px; ">
+           </div>
+
+       <div class="mb-3"> 
+        <label for="image" class="form-label">Upload Image</label>
+        <input class="form-control" type="file" name="listing[image]" 
+        >
+
+       </div>
+       <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input type="number" class="form-control" name="listing[price]"value="<%=list.price%>"> 
+        
+
+       </div>
+       <div class="row">
+        <div class="col-md-8"> 
+         <div class="mb-3">
+        <label for="location" class="form-label">Location</label>
+        <input type="text" class="form-control" name="listing[location]" value="<%=list.location%>">
+        
+       </div>
+    </div>
+    <div class="col-md-4">
+       <div class="mb-3">
+        <label for="country" class="form-label">Country</label>
+        <input type="text" class="form-control" name="listing[country]" value="<%=list.country%>">
+        </div>
+     </div> 
+    </div>
+    <div>
+        <label for="category" class="form-label">Category</label>
+        <select id="category" name="listing[category]" class="form-control" value="<%=list.category%>" >
+            <option value="city">city</option>
+            <option value="castels">castels</option>
+            <option value="sea">Sea</option>
+            <option value="camping">camping</option>
+          <option value="mountains">mountain</option>
+          <option value="arctic">Arctic</option>
+          <option value="farms">Farms</option>
+          <option value="deserts">Deserts</option>
+        </select>
+      </div>
+        <button class=" btn btn-dark edit-btn mt-3">edit</button>
+    </form>
+
+</body>
+</div>
+</div>
