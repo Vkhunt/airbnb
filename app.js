@@ -1,4 +1,4 @@
-if(process.env.NODE_ENV !="production"){
+ if(process.env.NODE_ENV !="production"){
   require("dotenv").config();
 }
 
@@ -15,20 +15,25 @@ const flash=require("connect-flash");
 const passport=require("passport");
 const localStrategy=require("passport-local");  
 const User=require("./models/user.js");
-
 const listingrouter=require("./routes/listing.js");
 const reviewrouter=require("./routes/review.js");
 const userrouter=require("./routes/user.js");
+ // Load environment variables
 
-const url="mongodb://127.0.0.1:27017/wanderlust";
-main().then(()=>{
- console.log("mongo connected");
-}).catch((err)=>{
-  console.log(err);
-});
-async function main(){
-    await mongoose.connect(url);
+const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/wanderlust";
+
+async function main() {
+    try {
+      await mongoose.connect(MONGO_URI);
+
+        console.log("MongoDB Connected ✅");
+    } catch (err) {
+        console.error("MongoDB Connection Error ❌", err);
+    }
 }
+
+main();
+
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"views"))
 app.use(express.urlencoded({extended:true})); 
@@ -36,6 +41,8 @@ app.use(methodoverride("_method"));
 app.engine("ejs",ejsmate);
 app.use(express.static(path.join(__dirname,"/public")));
 app.use(express.json());
+
+
 
 const sessionOptions={
   secret:"mysecreate",
