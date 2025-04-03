@@ -18,4 +18,4 @@ const reviewSchema=new Schema({
         ref:"User",
     },
 });
- module.exports =mongoose.model("review",reviewSchema);
+ module.exports =mongoose.model("review",reviewSchema,"review");

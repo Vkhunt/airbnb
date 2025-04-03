@@ -39,5 +39,5 @@ listingSchema.post("findOneAndDelete",async(listing)=>{
 
 
 
-module.exports=mongoose.model("listing",listingSchema);
+module.exports=mongoose.model("listing",listingSchema,"listing");
 

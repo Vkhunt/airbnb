@@ -1,4 +1,4 @@
-if(process.env.NODE_ENV !="production"){
+/*if(process.env.NODE_ENV !="production"){
   require("dotenv").config();
 }
 
@@ -15,25 +15,20 @@ const flash=require("connect-flash");
 const passport=require("passport");
 const localStrategy=require("passport-local");  
 const User=require("./models/user.js");
+
 const listingrouter=require("./routes/listing.js");
 const reviewrouter=require("./routes/review.js");
 const userrouter=require("./routes/user.js");
- // Load environment variables
 
-const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/wanderlust";
-
-async function main() {
-    try {
-      await mongoose.connect(MONGO_URI);
-
-        console.log("MongoDB Connected ✅");
-    } catch (err) {
-        console.error("MongoDB Connection Error ❌", err);
-    }
+const url="mongodb://127.0.0.1:27017/wanderlust";
+main().then(()=>{
+ console.log("mongo connected");
+}).catch((err)=>{
+  console.log(err);
+});
+async function main(){
+    await mongoose.connect(url);
 }
-
-main();
-
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"views"))
 app.use(express.urlencoded({extended:true})); 
@@ -41,8 +36,6 @@ app.use(methodoverride("_method"));
 app.engine("ejs",ejsmate);
 app.use(express.static(path.join(__dirname,"/public")));
 app.use(express.json());
-
-
 
 const sessionOptions={
   secret:"mysecreate",
@@ -60,11 +53,12 @@ app.get("/listing/trending",async(req,res)=>{
 app.get("/listing/category/:category", async (req, res) => {
   try {
     const { category } = req.params; // Get category from URL
-  
+    console.log("Category requested:", category);
 
     // Fetch listings that match the category (case-insensitive)
     const catlist = await listing.find({ category: { $regex: new RegExp(category, "i") } });
 
+    console.log("Filtered Listings:", catlist);
 
     res.render("icons/category.ejs", { catlist, category });
   } catch (error) {
@@ -104,6 +98,7 @@ app.use((req,res,next)=>{
   res.send(registeredUser);
 });
 */
+/*
 app.use("/listing",listingrouter);
 app.use("/listing/:id/review",reviewrouter);
 app.use("/",userrouter);
@@ -120,3 +115,4 @@ app.use((err,req,res,next)=>{
 app.listen(8080,()=>{
  console.log("server works");
 });
+*/
