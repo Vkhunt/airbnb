@@ -75,7 +75,7 @@ app.get("/listing/category/:category", async (req, res) => {
 
 
 app.get("/",(req,res)=>{
-  res.send("works");
+  res.redirect("/listing");
 });
 app.use(session(sessionOptions));
 app.use(flash()); 
